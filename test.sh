@@ -10,28 +10,17 @@ for a in $(cat tests.txt); do
     mono $1 "tests/$a"
 
     if [ $? -eq 0 ]; then
-        ilasm "tests/${a}.il" > /dev/null
 
-        if [ $? -eq 0 ]; then
-            peverify --verify all "tests/${a}.exe"
-
-            if [ $? -eq 0 ]; then
-
-                if [ -f "inputs/$a" ]; then
-                    mono "tests/${a}.exe" < "inputs/$a" > "results/$a"
-                else
-                    mono "tests/${a}.exe" > "results/$a"
-                fi
-
-                if [ $? -ne 0 ]; then
-                    error=2
-                fi
-            else
-                error=2
-            fi
+        if [ -f "inputs/$a" ]; then
+            lli "tests/${a}.ll" < "inputs/$a" > "results/$a"
         else
+            lli "tests/${a}.ll" > "results/$a"
+        fi
+
+        if [ $? -ne 0 ]; then
             error=2
         fi
+
     else
         error=1
     fi
