@@ -11,24 +11,29 @@ for /f "tokens=*" %%a in (tests.txt) do (
     %1 tests\%%a
 	
     if !errorlevel! == 0 (
-		echo ============================= ILASM %%a  ===============================
-		ilasm tests\%%a.il
-		if !errorlevel! == 0 (
-			echo ============================= PEVERIFY %%a  ===============================
-			peverify tests\%%a.exe 
-			if !%errorlevel! == 0 (
-				if exist inputs\%%a (
-					tests\%%a.exe < inputs\%%a > results\%%a
-				) else (
-					tests\%%a.exe > results\%%a
-				)
-				if NOT !%errorlevel! == 0 (
-					set /A problem = 4
-					)
-			) else (
-				set /A problem = 3
-			)
+		echo ============================= LLI %%a  ===============================
+		@REM ilasm tests\%%a.il
+		@REM if !errorlevel! == 0 (
+		@REM 	echo ============================= PEVERIFY %%a  ===============================
+		@REM 	peverify tests\%%a.exe 
+		@REM 	if !%errorlevel! == 0 (
+		@REM 		if exist inputs\%%a (
+		@REM 			tests\%%a.exe < inputs\%%a > results\%%a
+		@REM 		) else (
+		@REM 			tests\%%a.exe > results\%%a
+		@REM 		)
+		@REM 		if NOT !%errorlevel! == 0 (
+		@REM 			set /A problem = 4
+		@REM 			)
+		@REM 	) else (
+		@REM 		set /A problem = 3
+		@REM 	)
+		if exist inputs\%%a (
+		 	lli tests\%%a.ll < inputs\%%a > results\%%a
 		) else (
+			lli tests\%%a.ll > results\%%a
+		)
+		if NOT !%errorlevel! == 0 (
 			set /A problem = 2
 		)
 	) else (

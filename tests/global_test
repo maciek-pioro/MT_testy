@@ -13,7 +13,9 @@ double Z;
 bool p;
 bool q;
 bool r;
-
+a = 0;
+X = 0;
+p = false;
 //Poczatek programu
 write a;
 write "\n";
@@ -24,7 +26,7 @@ write "\n";
 
 read a;
 read X;
-read p;
+p = true;
 
 {}
 {

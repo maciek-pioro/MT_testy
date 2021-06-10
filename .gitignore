@@ -1,3 +1,4 @@
+*.il
 *.ll
 *.exe
 !TestPad.exe
