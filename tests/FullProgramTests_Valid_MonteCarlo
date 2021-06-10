@@ -8,7 +8,8 @@ program {
     double pi;
     
     iters = 1000;
-    
+	
+    i = inside = 0;
     seed = 123456789;
     a = 48271;
     c = 0;

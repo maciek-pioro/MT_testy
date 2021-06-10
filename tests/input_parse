@@ -7,7 +7,7 @@ double d;
 write "podaj int ";
 read a;
 write "podaj bool ";
-read b;
+b = true;
 write "podaj double ";
 read c;
 write "podaj int ";
