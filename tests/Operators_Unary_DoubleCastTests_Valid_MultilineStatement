@@ -3,7 +3,7 @@ program
 	double d;
 	d =
 		(double)   
-			true
+			2
 
 
 

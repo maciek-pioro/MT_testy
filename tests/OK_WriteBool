@@ -1,5 +1,5 @@
 program{
 	bool b;
-	read b;
+	b = true;
 	write b;
 }

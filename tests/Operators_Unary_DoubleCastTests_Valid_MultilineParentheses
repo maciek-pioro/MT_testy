@@ -16,7 +16,7 @@ program
 		
 		
 		)   
-			true;
+			2;
 
 	d = (double
 	)1;
@@ -28,7 +28,7 @@ program
 	
 	
 	
-	) false;
+	) 2;
 
 
 }
